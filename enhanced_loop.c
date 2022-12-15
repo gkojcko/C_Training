@@ -4,10 +4,11 @@ int main(){
 
 
 int numbers [15];
+char options;
 int i;
 int z;
-char options;
 int o;
+  
 
 printf("Enter maximum 15 numbers\n");
 for(i=0;i<15;i++){
