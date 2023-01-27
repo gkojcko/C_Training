@@ -1,0 +1,52 @@
+#include <stdio.h>
+int main(){
+	
+	int iparray;
+	char option;
+	int iparray2;
+	int weight = 1;
+	int last_digit;
+	int decimal = 0;
+	int z = 0;
+	int o = 0;
+	int binary [32];
+	int l = 0;
+	
+	
+	
+	
+	printf("Choose a function:\n A.Binary to Decimal\n B.Decimal to Binary:\n");
+	scanf(" %c",&option);
+		if(option=='A'){
+			printf("Enter an IP adress:\n");
+			scanf("%d",&iparray);
+			while(iparray>0){
+				binary[o] = iparray%2;
+				iparray = iparray/2;
+				o++;
+				
+				
+				
+			}
+			for(int p = o-1;p>=0;p--){
+				printf("%d",binary[p]);
+		}
+		}
+		else{
+			printf("Enter the binary IP:\n");
+			scanf("%d",&iparray2);
+			while(iparray2>0){
+				last_digit = iparray2%10;
+				decimal += last_digit * weight;
+				weight *= 2;
+				iparray2 = iparray2/10;
+		
+			}	
+			printf("%d",decimal);
+		}
+
+		
+	
+	
+}
+
