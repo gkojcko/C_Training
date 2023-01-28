@@ -1,52 +1,65 @@
-#include <stdio.h>
+#include <stdio.h>>
+void dec_to_bin(int octet1, int octet2, int octet3, int octet4);             //initializing both functions
+void bin_to_dec(int binaryip1,int binaryip2,int binaryip3, int binaryip4);
 int main(){
-    printf("Hello, would you like to convert\n A.Decimal to Binary\n B.Binary to Decimal:\n");
+    printf("Hello there!, would you like to convert your IP Adress to:\n A.Decimal to Binary\n B.Binary to Decimal\n");
     char option;
+    int octet1,octet2,octet3,octet4;
     scanf("%c",&option);
     if(option=='A'){
-        printf("Great. Enter an IP adress:\n");
-        int octet1,octet2,octet3,octet4;;
-        scanf("%d.%d.%d.%d",&octet1,&octet2,&octet3,&octet4); //storing each IP octet, into octet variables seperated by a decimal point
-
-        int binary1[8],binary2[8],binary3[8],binary4[8];
-
-        for(int i=0;i<8;i++){
-            binary1[i] = octet1%2; //extracting 1 if odd, 0 if even
-            octet1 = octet1/2;
-            binary2[i] = octet2%2;
-            octet2 = octet2/2;        //doing the conversion and storing bits into the binary arrays from the octets
-            binary3[i] = octet3%2;
-            octet3 = octet3/2;
-            binary4[i] = octet4%2;
-            octet4 = octet4/2;
-        }
-
-        printf("The IP you provided in binary form is : ");
-
-        printf("");
-        for(int i=7;i>=0;i--){    //printing the bits from the right to the left, starting from 7 all the way to 0 backwards 
-            printf("%d",binary1[i]);
-        }
-        printf(".");
-        for(int i=7;i>=0;i--){
-            printf("%d",binary2[i]);
+        printf("Enter an IP Adress in Decimal form:\n");
+        scanf(" %d.%d.%d.%d", &octet1, &octet2, &octet3, &octet4); //storing each IP octet, into octet variables seperated by a decimal point
+        dec_to_bin(octet1, octet2, octet3, octet4);
     }
-        printf(".");
-        for(int i=7;i>=0;i--){
-            printf("%d",binary3[i]);
-        }
-        printf(".");
-        for(int i=7;i>=0;i--){
-            printf("%d",binary4[i]);
-        }
-
-
-}
     else if(option=='B'){
-        printf("Great. Enter the binary IP Adress:\n");
+        printf("Great! Enter a binary IP Adress:\n");
         int binaryip1,binaryip2,binaryip3,binaryip4;
-        scanf("%d.%d.%d.%d",&binaryip1,&binaryip2,&binaryip3,&binaryip4); //storing each binary octet seperated by a decimal point 
-        int decimal1 = 0, decimal2= 0, decimal3 = 0, decimal4= 0, weight = 1;
+        scanf("%d.%d.%d.%d",&binaryip1,&binaryip2,&binaryip3,&binaryip4);
+        bin_to_dec(binaryip1,binaryip2,binaryip3,binaryip4);
+    }
+    else{
+        printf("Choose a valid option: ");
+        while(option!= 'A' || option!= 'B'){
+            scanf(" %c",&option);
+        }
+    }
+}
+
+void dec_to_bin(int octet1 ,int octet2, int octet3, int octet4){
+
+     int binary1[8], binary2[8], binary3[8], binary4[8];
+
+    for(int i=0;i<8;i++) {
+        binary1[i] = octet1 % 2; //extracting 1 if odd, 0 if even
+        octet1 = octet1 / 2;
+        binary2[i] = octet2 % 2;
+        octet2 = octet2 / 2;
+        binary3[i] = octet3 % 2;
+        octet3 = octet3 / 2;
+        binary4[i] = octet4 % 2;
+        octet4 = octet4 / 2;
+    }
+
+    printf("The IP you provided in binary form is : ");
+    for(int i=7;i>=0;i--) {      //printing the bits from the right to the left, starting from 7 all the way to 0 backwards 
+        printf("%d", binary1[i]);
+    }
+    printf(".");
+    for(int i=7;i>=0;i--) {
+        printf("%d", binary2[i]);
+    }
+    printf(".");
+    for(int i=7;i>=0;i--) {
+        printf("%d", binary3[i]);
+    }
+    printf(".");
+    for(int i=7;i>=0;i--) {
+        printf("%d", binary4[i]);
+    }
+    printf("\n");
+}
+void bin_to_dec(int binaryip1,int binaryip2,int binaryip3, int binaryip4){
+    int decimal1 = 0, decimal2= 0, decimal3 = 0, decimal4= 0, weight = 1;
         int rem;
 
         while(binaryip1!=0) {
@@ -74,7 +87,7 @@ int main(){
             binaryip3 /= 10;
         }
         weight =1;
-\
+
 
         while(binaryip4!=0) {
             rem = binaryip4%10;
@@ -86,4 +99,4 @@ int main(){
         printf("The decimal represenation of your binary IP adress is: ");
         printf("%d.%d.%d.%d",decimal1,decimal2,decimal3,decimal4);
     }
-}
+
