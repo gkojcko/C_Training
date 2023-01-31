@@ -6,21 +6,38 @@ int main(){
     char option;
     int octet1,octet2,octet3,octet4;
     scanf("%c",&option);
-    if(option=='A'){
+    if (option=='A' || option=='a'){
         printf("Enter an IP Adress in Decimal form:\n");
+        
         scanf(" %d.%d.%d.%d", &octet1, &octet2, &octet3, &octet4); //storing each IP octet, into octet variables seperated by a decimal point
         dec_to_bin(octet1, octet2, octet3, octet4);
     }
-    else if(option=='B'){
+    else if(option=='B' || option== 'b'){
         printf("Great! Enter a binary IP Adress:\n");
         int binaryip1,binaryip2,binaryip3,binaryip4;
         scanf("%d.%d.%d.%d",&binaryip1,&binaryip2,&binaryip3,&binaryip4);
         bin_to_dec(binaryip1,binaryip2,binaryip3,binaryip4);
     }
     else{
-        printf("Choose a valid option: ");
-        while(option!= 'A' || option!= 'B'){
+        while((option!= 'A' || option!= 'a') || (option!= 'B' || option!='b')){
+        	printf("Choose a valid option: ");
             scanf(" %c",&option);
+            if(option=='A' || option=='a'){
+				printf("Enter an IP Adress in Decimal form:\n");
+                scanf(" %d.%d.%d.%d", &octet1, &octet2, &octet3, &octet4); 
+                dec_to_bin(octet1, octet2, octet3, octet4);
+                
+
+            	
+			}
+			else if(option=='B' || option== 'b'){
+				  printf("Great! Enter a binary IP Adress:\n");
+				   int binaryip1,binaryip2,binaryip3,binaryip4;
+				   scanf("%d.%d.%d.%d",&binaryip1,&binaryip2,&binaryip3,&binaryip4);
+				     bin_to_dec(binaryip1,binaryip2,binaryip3,binaryip4);
+				     break;
+				
+			}   
         }
     }
 }
@@ -99,4 +116,3 @@ void bin_to_dec(int binaryip1,int binaryip2,int binaryip3, int binaryip4){
         printf("The decimal represenation of your binary IP adress is: ");
         printf("%d.%d.%d.%d",decimal1,decimal2,decimal3,decimal4);
     }
-
