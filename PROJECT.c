@@ -25,6 +25,7 @@ int main() {
         printf("Enter an IP Adress in Decimal form:\n");
         scanf(" %d.%d.%d.%d", & octet1, & octet2, & octet3, & octet4);
         dec_to_bin(octet1, octet2, octet3, octet4);
+        break;
 
       } else if (option == 'B' || option == 'b') {
         printf("Great! Enter a binary IP Adress:\n");
